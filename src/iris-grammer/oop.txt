@@ -52,7 +52,7 @@ end:
 
 import:
   symbol: "#include"
-  syntax: "#include name with path"
+  syntax: "#include name from path"
   transpile: "const ${name} = require(${path})"
 
 

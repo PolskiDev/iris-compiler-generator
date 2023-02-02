@@ -45,14 +45,14 @@ output_extension: ".lua"
 
 begin:
   symbol: "program"
-  transpile: "/* My First Program */"
+  transpile: "-- My First Program"
 end:
   symbol: "endprogram"
-  transpile: "/* End Of Program */"
+  transpile: "-- End Of Program"
 
 import:
   symbol: "#include"
-  syntax: "#include name with path"
+  syntax: "#include name from path"
   transpile: "local ${name} = require(${path})"
 
 comment:
