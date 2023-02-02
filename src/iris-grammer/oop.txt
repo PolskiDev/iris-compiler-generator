@@ -40,7 +40,7 @@ version: "Your version"
 
 
 
-input_extension:  ".ts2"
+input_extension:  ".your-extension"
 output_extension: ".ts"
 
 begin:

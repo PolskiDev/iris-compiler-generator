@@ -4,7 +4,7 @@
 #### Author: Gabriel Margarido
 ###### Developed by Gabriel Margarido and Licensed as Free Software under FreeBSD 2-clause license
 
-<center><img src="IRIS.png" width="60%"></center>
+<img src="IRIS.png" width="3300px">
 
 
 - Uses transpilation to translate from your generated programming language  to the goal language. It can be basically every high-level or low-level programming language.
