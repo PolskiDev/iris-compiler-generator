@@ -1,0 +1,12 @@
+program
+    #include love from "love"
+    // "Begin"
+    if (a > 3) do
+        print("Hello world")
+    elseif (a == 3) do
+        print("Hello three")
+    else
+
+    end
+
+endprogram

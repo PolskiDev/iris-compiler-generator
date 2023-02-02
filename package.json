@@ -1,0 +1,19 @@
+{
+  "name": "grammer",
+  "version": "1.0.0",
+  "description": "Declarative Compiler Constructor - GrammerDCC",
+  "bin": "grammer/grammer.js",
+  "main": "grammer/grammer.js",
+  "scripts": {
+    "build": "npx tsc grammer/*.ts",
+    "conf": "npm install --save"
+  },
+  "author": "Gabriel Margarido",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^18.11.18",
+    "js-yaml": "^4.1.0",
+    "typescript": "^4.9.4"
+  }
+}

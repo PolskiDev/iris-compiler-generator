@@ -1,0 +1,4 @@
+#!/bin/bash
+npx tsc visualstudio/*.ts
+node visualstudio/visualstudio.js $1 $2
+rm -Rfv visualstudio/*.js

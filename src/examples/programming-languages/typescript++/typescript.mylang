@@ -1,0 +1,12 @@
+program
+    #include love from "love"
+    // "Begin"
+    if (a > 3) do
+        console.log("Hello world")
+    elseif (a == 3) do
+        console.log("Hello three")
+    else
+
+    end
+
+endprogram

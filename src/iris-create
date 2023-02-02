@@ -1,0 +1,4 @@
+#!/bin/bash
+npx tsc iris-grammer/*.ts
+node iris-grammer/create.js $1 $2
+rm -Rfv iris-grammer/*.js

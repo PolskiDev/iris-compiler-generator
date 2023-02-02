@@ -1,0 +1,25 @@
+{
+  "name": "fusion",
+  "displayName": "Fusion",
+  "description": "Fusion VSCode Extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fusion",
+      "aliases": ["Fusion Programming Language", "fusion"],
+      "extensions": [".fusion"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fusion",
+      "scopeName": "source.fusion",
+      "path": "./syntaxes/fusion.tmLanguage.json"
+    }]
+  }
+}

@@ -1,0 +1,176 @@
+author: "Gabriel Margarido"
+license: "BSD 2-clause"
+version: "1.0"
+
+# --------------------------------------------------
+# GENERATE YOUR OWN COMPILER BY USING A DECLARATIVE
+# COMPILER GENERATOR - IRIS (Gabriel Margarido).
+# --------------------------------------------------
+
+# Copyright 2023 Gabriel Margarido
+
+# Redistribution and use in source and binary forms,
+# with or without modification, are permitted provided
+# that the following conditions are met:
+
+# 1. Redistributions of source code must retain
+# the above copyright notice, this list of conditions
+# and the following disclaimer.
+
+# 2. Redistributions in binary form must reproduce
+# the above copyright notice, this list of conditions
+# and the following disclaimer in the documentation
+# and/or other materials provided with the distribution.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS
+# AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+# GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+# WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+# --------------------------------------------------------------
+
+
+
+input_extension:  ".mylang"
+output_extension: ".ts"
+
+begin:
+  symbol: "program"
+  transpile: "/* My First Program */"
+end:
+  symbol: "endprogram"
+  transpile: "/* End Of Program */"
+
+import:
+  symbol: "#include"
+  syntax: "#include name with path"
+  transpile: "const ${name} = require(${path})"
+
+
+comment:
+  #->     // "This is my first comment"
+  symbol: "//"
+  transpile: "//${comment}"
+
+
+try_catch_finally:
+  symbol_try: "try"
+  symbol_catch: "catch"
+  symbol_finally: "finally"
+
+  transpile_try: "try {"
+  transpile_catch: "} catch {"
+  transpile_finally: "} finally {"
+
+
+break:
+  symbol: "break"
+  transpile: "break;"
+continue:
+  symbol: "continue"
+  transpile: "continue;"
+
+
+if_elseif_else:
+  if_symbol: "if"
+  elseif_symbol: "elseif"
+  else_symbol: "else"
+
+  if_syntax: "if statement do"
+  elseif_syntax: "elseif statement do"
+  else_syntax: "else"
+
+  transpile_if: "if (${statement}) "
+  transpile_elseif: "} else if (${statement}) "
+  transpile_else: "} else {"
+
+
+while_statement:
+  symbol: "while"
+  syntax: "while statement do"
+  transpile: "while(${statement}) "
+
+
+for_statement:
+  symbol: "for"
+  syntax: "for iter in low to max"
+  transpile: "for(let ${iter}=${low}; ${iter}<${max}; ${iter}++) "
+
+
+times_statement:
+  symbol: "times"
+  syntax: "num times"
+
+
+var_assignment:
+  symbol: "="
+  array_auxiliary_symbol: '[]'
+  syntax: "typed identifier = value"
+  syntax_array: "typed[] identifier = value"
+  transpile0: "let ${identifier}: ${typed};"
+  transpile1: "let ${identifier}: ${typed} = ${value};"
+  transpile2: "let ${identifier}: ${typed} = [ ${value.slice(1,-1)} ];"
+  null_value: "nil"
+
+
+  typedef:
+      integer:
+        from: "Integer"
+        to: "number"
+      float:
+        from: "Floating"
+        to: "number"
+      string:
+        from: "String"
+        to: "string"
+      bool:
+        from: "Boolean"
+        to: "bool"
+
+
+var_reassignment:
+  symbol: ":="
+  syntax: "identifier := value"
+  transpile0: "${identifier} = ${value};"
+  #transpile1: "${identifier} = [ ${value.slice(1,-1)} ];"
+
+
+open_block:
+  symbol: "do"
+  transpile: "{"
+
+close_block:
+  symbol: "end"
+  transpile: "}"
+
+function_definition:
+  symbol: "function"
+  syntax: "function identifier args : typed"
+  transpile: "export function ${identifier} (${args}) : ${typed} "
+
+
+function_call:
+  syntax: "(...)"
+  transpile: "${identifier}(${args});"
+
+function_return:
+  syntax: "return value"
+  symbol:  "return"
+  transpile: "return ${value};"
+
+
+class_definition:
+  symbol: "class"
+  inheritance_symbol: "extends"
+  syntax: "class identifier extends inheritance"
+  transpile1: "class ${identifier} "
+  transpile2: "class ${identifier} extends ${inheritance} "
