@@ -6,11 +6,11 @@ export function end_compiler(file) {
 export function init_compiler(file, input_ext, output_ext, regex_mode) {
     let regex_form
     if (regex_mode == '--include-braces') {
-        regex_form = /[A-Za-z0-9_$++::.,@#><>=<=>===:=]+|"[^"]+"|"[^"]+"|\\([^)]*\\)|\\{[^)]*\\}|\\[[^\\]]*\\]|(:)|(=)/gi
+        regex_form = /[A-Za-z0-9_$++::.,@#><>=<=>===:={}\[\]]+|"[^"]+"|"[^"]+"|\([^)]*\)|\{[^)]*\}|\[[^\]]*\\]|(:)|(=)/gi
     } else if (regex_mode == '--exclude-braces') {
         regex_form = /[A-Za-z0-9_$++::.,@#><>=<=>===:={}]+|"[^"]+"|"[^"]+"|\\([^)]*\\)|(:)|(=)/gi
     } else {
-        regex_form = /[A-Za-z0-9_$++::.,@#><>=<=>===:={}]+|"[^"]+"|"[^"]+"|\\([^)]*\\)|(:)|(=)/gi
+        regex_form = /[A-Za-z0-9_$++::.,@#><>=<=>===:={}\[\]]+|"[^"]+"|"[^"]+"|\([^)]*\)|\{[^)]*\}|\[[^\]]*\\]|(:)|(=)/gi
     }
     
     fs.writeFileSync(file,

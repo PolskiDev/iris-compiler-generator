@@ -29,7 +29,7 @@ export function func_call(outfile:string,
     if(stack[i].slice(0,1) == '${delim.slice(0,1)}'
     && stack[i-1].match(/[A-Za-z0-9]/)
     && stack[i-2] == undefined && stack[i+1] == undefined) {
-        let identifier = stack[i+${identifier_index}-1]
+        let identifier = stack[i+${identifier_index}-2]
         let args = stack[i].slice(1,-1)
         
         let res = \`${transpile}\`+'\\n'
